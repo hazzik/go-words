@@ -36,7 +36,7 @@ func collectPartsUnderAThousand(parts []string, n int64) []string {
 	return parts
 }
 
-func words(n int64) string {
+func FromInt64(n int64) string {
 	var parts []string = make([]string, 0, 32)
 	if n < 0 {
 		parts = append(parts, "minus")

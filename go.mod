@@ -1,4 +1,4 @@
-module github.com/hazzik/go-number-to-words
+module github.com/hazzik/go-words
 
 go 1.19
 
