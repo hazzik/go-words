@@ -29,6 +29,7 @@ func TestFromInt8(t *testing.T) {
 	test(t, 111, "one hundred eleven")
 	test(t, 127, "one hundred twenty seven")
 	test(t, -127, "minus one hundred twenty seven")
+	test(t, -128, "minus one hundred twenty eight")
 }
 
 func TestFromUint8(t *testing.T) {
@@ -76,6 +77,7 @@ func TestFromInt16(t *testing.T) {
 	test(t, 11111, "eleven thousand one hundred eleven")
 	test(t, 32767, "thirty two thousand seven hundred sixty seven")
 	test(t, -32767, "minus thirty two thousand seven hundred sixty seven")
+	test(t, -32768, "minus thirty two thousand seven hundred sixty eight")
 }
 
 func TestFromUint16(t *testing.T) {
@@ -129,6 +131,7 @@ func TestFromInt32(t *testing.T) {
 	test(t, 1111111111, "one billion one hundred eleven million one hundred eleven thousand one hundred eleven")
 	test(t, 2147483647, "two billion one hundred forty seven million four hundred eighty three thousand six hundred forty seven")
 	test(t, -2147483647, "minus two billion one hundred forty seven million four hundred eighty three thousand six hundred forty seven")
+	test(t, -2147483648, "minus two billion one hundred forty seven million four hundred eighty three thousand six hundred forty eight")
 }
 
 func TestFromUint32(t *testing.T) {
@@ -183,6 +186,7 @@ func TestFromInt64(t *testing.T) {
 	test(t, 11111111111, "eleven billion one hundred eleven million one hundred eleven thousand one hundred eleven")
 	test(t, 9223372036854775807, "nine quintillion two hundred twenty three quadrillion three hundred seventy two trillion thirty six billion eight hundred fifty four million seven hundred seventy five thousand eight hundred seven")
 	test(t, -9223372036854775807, "minus nine quintillion two hundred twenty three quadrillion three hundred seventy two trillion thirty six billion eight hundred fifty four million seven hundred seventy five thousand eight hundred seven")
+	test(t, -9223372036854775808, "minus nine quintillion two hundred twenty three quadrillion three hundred seventy two trillion thirty six billion eight hundred fifty four million seven hundred seventy five thousand eight hundred eight")
 }
 
 func TestFromUint64(t *testing.T) {
