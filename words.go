@@ -36,6 +36,18 @@ func collectPartsUnderAThousand(parts []string, n int64) []string {
 	return parts
 }
 
+func FromInt8(n int8) string {
+	return FromInt64(int64(n))
+}
+
+func FromInt16(n int16) string {
+	return FromInt64(int64(n))
+}
+
+func FromInt32(n int32) string {
+	return FromInt64(int64(n))
+}
+
 func FromInt64(n int64) string {
 	if n == 0 {
 		return "zero"
