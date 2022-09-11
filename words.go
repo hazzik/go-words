@@ -9,7 +9,7 @@ var units [20]string = [20]string{"", "one", "two", "three", "four", "five", "si
 var tens [10]string = [10]string{"", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"}
 var powers [9]string = [9]string{"", "thousand", "million", "billion", "trillion", "quadrillion", "quintillion", "sextillion", "septillion"}
 
-func collectParts(parts []string, n int64, d int64, s string) (int64, []string) {
+func collectParts(parts []string, n uint64, d uint64, s string) (uint64, []string) {
 	if n < d {
 		return n, parts
 	}
@@ -20,7 +20,7 @@ func collectParts(parts []string, n int64, d int64, s string) (int64, []string) 
 	return n % d, parts
 }
 
-func collectPartsUnderAThousand(parts []string, n int64) []string {
+func collectPartsUnderAThousand(parts []string, n uint64) []string {
 	if n >= 100 {
 		parts = append(parts, units[n/100])
 		parts = append(parts, "hundred")
@@ -61,18 +61,23 @@ func FromUint32(n uint32) string {
 }
 
 func FromInt64(n int64) string {
+	if n < 0 {
+		return "minus " + FromUint64(uint64(-n))
+	}
+
+	return FromUint64(uint64(n))
+}
+
+func FromUint64(n uint64) string {
 	if n == 0 {
 		return "zero"
 	}
 
 	var parts []string = make([]string, 0, 32)
-	if n < 0 {
-		parts = append(parts, "minus")
-		n = -n
-	}
 	for i := 6; i > 0; i-- {
-		n, parts = collectParts(parts, n, int64(math.Pow10(i*3)), powers[i])
+		n, parts = collectParts(parts, n, uint64(math.Pow10(i*3)), powers[i])
 	}
+
 	parts = collectPartsUnderAThousand(parts, n)
 	return strings.Join(parts, " ")
 }
