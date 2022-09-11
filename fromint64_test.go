@@ -6,6 +6,10 @@ import (
 	"gotest.tools/v3/assert"
 )
 
+func TestZero(t *testing.T) {
+	assert.Equal(t, FromInt64(0), "zero")
+}
+
 func TestOne(t *testing.T) {
 	assert.Equal(t, FromInt64(1), "one")
 }
