@@ -35,8 +35,10 @@ func TestFromInt8(t *testing.T) {
 func TestFromUint8(t *testing.T) {
 	test := func(t *testing.T, input uint8, expected string) {
 		t.Helper()
-		actual := FromUint8(input)
-		assert.Equal(t, actual, expected)
+		t.Run(fmt.Sprint(input), func(t *testing.T) {
+			t.Helper()
+			assert.Equal(t, FromUint8(input), expected)
+		})
 	}
 
 	test(t, 0, "zero")
@@ -83,8 +85,10 @@ func TestFromInt16(t *testing.T) {
 func TestFromUint16(t *testing.T) {
 	test := func(t *testing.T, input uint16, expected string) {
 		t.Helper()
-		actual := FromUint16(input)
-		assert.Equal(t, actual, expected)
+		t.Run(fmt.Sprint(input), func(t *testing.T) {
+			t.Helper()
+			assert.Equal(t, FromUint16(input), expected)
+		})
 	}
 
 	test(t, 0, "zero")
