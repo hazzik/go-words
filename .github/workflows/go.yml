@@ -9,7 +9,7 @@ jobs:
   test:
     strategy:
       matrix:
-        version: [1.18, 1.19]
+        version: [oldstable, stable]
 
     runs-on: ubuntu-latest
     steps:
