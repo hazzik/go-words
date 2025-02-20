@@ -4,6 +4,6 @@
     "config:base"
   ],
   "postUpdateOptions": [
-    "gomodTidy"
+    "gomodMassage", "gomodTidy", "gomodUpdateImportPaths",
   ]
 }
