@@ -37,27 +37,27 @@ func collectPartsUnderAThousand(parts []string, n uint64) []string {
 }
 
 func FromUint8(n uint8) string {
-	return FromInt64(int64(n))
+	return FromInteger(n)
 }
 
 func FromInt8(n int8) string {
-	return FromInt64(int64(n))
+	return FromInteger(n)
 }
 
 func FromInt16(n int16) string {
-	return FromInt64(int64(n))
+	return FromInteger(n)
 }
 
 func FromUint16(n uint16) string {
-	return FromInt64(int64(n))
+	return FromInteger(n)
 }
 
 func FromInt32(n int32) string {
-	return FromInt64(int64(n))
+	return FromInteger(n)
 }
 
 func FromUint32(n uint32) string {
-	return FromInt64(int64(n))
+	return FromInteger(n)
 }
 
 func FromInt64(n int64) string {
@@ -80,4 +80,22 @@ func FromUint64(n uint64) string {
 
 	parts = collectPartsUnderAThousand(parts, n)
 	return strings.Join(parts, " ")
+}
+
+func FromInt(n int) string {
+	return FromInteger(n)
+}
+
+func FromUint(n uint) string {
+	return FromInteger(n)
+}
+
+func FromInteger[I interface {
+	~int8 | ~int16 | ~int32 | ~int64 | ~int | ~uint8 | ~uint16 | ~uint32 | ~uint64 | ~uint
+}](n I) string {
+	if n < 0 {
+		return "minus " + FromUint64(uint64(-n))
+	}
+
+	return FromUint64(uint64(n))
 }
