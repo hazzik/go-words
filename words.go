@@ -94,7 +94,7 @@ func FromInteger[I interface {
 	~int8 | ~int16 | ~int32 | ~int64 | ~int | ~uint8 | ~uint16 | ~uint32 | ~uint64 | ~uint
 }](n I) string {
 	if n < 0 {
-		return "minus " + FromUint64(uint64(-n))
+		return FromInt64(int64(n))
 	}
 
 	return FromUint64(uint64(n))
