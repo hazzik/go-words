@@ -216,3 +216,31 @@ func TestFromUint64(t *testing.T) {
 	test(t, 9223372036854775807, "nine quintillion two hundred twenty three quadrillion three hundred seventy two trillion thirty six billion eight hundred fifty four million seven hundred seventy five thousand eight hundred seven")
 	test(t, 18446744073709551615, "eighteen quintillion four hundred forty six quadrillion seven hundred forty four trillion seventy three billion seven hundred nine million five hundred fifty one thousand six hundred fifteen")
 }
+
+func TestFromInteger(t *testing.T) {
+	testI(t, 0, "zero")
+	testI(t, 1, "one")
+	testI(t, 2, "two")
+	testI(t, 19, "nineteen")
+	testI(t, 20, "twenty")
+	testI(t, 55, "fifty five")
+	testI(t, 100, "one hundred")
+	testI(t, 101, "one hundred one")
+	testI(t, 222, "two hundred twenty two")
+	testI(t, -10, "minus ten")
+	testI(t, 1111, "one thousand one hundred eleven")
+	testI(t, 11111111111, "eleven billion one hundred eleven million one hundred eleven thousand one hundred eleven")
+	testI(t, 9223372036854775807, "nine quintillion two hundred twenty three quadrillion three hundred seventy two trillion thirty six billion eight hundred fifty four million seven hundred seventy five thousand eight hundred seven")
+	testI(t, -9223372036854775807, "minus nine quintillion two hundred twenty three quadrillion three hundred seventy two trillion thirty six billion eight hundred fifty four million seven hundred seventy five thousand eight hundred seven")
+	testI(t, -9223372036854775808, "minus nine quintillion two hundred twenty three quadrillion three hundred seventy two trillion thirty six billion eight hundred fifty four million seven hundred seventy five thousand eight hundred eight")
+	testI(t, uint64(18446744073709551615), "eighteen quintillion four hundred forty six quadrillion seven hundred forty four trillion seventy three billion seven hundred nine million five hundred fifty one thousand six hundred fifteen")
+}
+
+func testI[I interface {
+	~int8 | ~int16 | ~int32 | ~int64 | ~int | ~uint8 | ~uint16 | ~uint32 | ~uint64 | ~uint
+}](t *testing.T, input I, expected string) {
+	t.Helper()
+	t.Run(fmt.Sprint(input), func(t *testing.T) {
+		assert.Equal(t, FromInteger(input), expected)
+	})
+}
